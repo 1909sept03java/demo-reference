@@ -12,7 +12,7 @@ public class Operators {
 	 */
 	
 	public static void main(String[] args) {
-		System.out.println(1 + 2 * 2 + 5);
+		System.out.println(12 | 25);
 	}
 	
 	//---------------UNARY OPERATORS---------------------------
@@ -109,6 +109,11 @@ public class Operators {
  		*/
  		static int bitwiseOr(int a, int b) {
  			return a | b;
+ 		}
+ 		
+ 		static void ifstatement() {
+ 			int x = 10;
+ 			if(x < 5  &&  x++ > 25) System.out.println("true");
  		}
  		
  		//SHORT CIRCUIT
