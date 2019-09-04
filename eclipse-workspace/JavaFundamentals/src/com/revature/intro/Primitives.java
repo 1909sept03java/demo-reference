@@ -10,10 +10,26 @@ public class Primitives {
 	float f; // doubles but smaller but more precision - 4 bytes 
 	short s; //  2 bytes
 	byte byt; // 8 bits
+	
+	Integer intWrap = new Integer(10);
+	Boolean boolWrap = b; //AUTOBOXING
+	Character charWrap = new Character('c');
+	Double doubWrap = d;
+	
 
 	public static void main(String[] args) {
-		casting();
+		wrappers();
 	}
+	
+	
+	static {
+		System.out.println("static block");
+	}
+	
+	{
+		System.out.println("instance scoped block");
+	}
+
 
 	static void numberBases() {
 		int dec = 10;
@@ -55,10 +71,24 @@ public class Primitives {
 		 * We can either explicitly cast or implicitly cast
 		 */
 
-		int x = 32767; //max value for short is 32767
+		int x = 32768 + 32769; //max value for short is 32767
 		long lon = x; //implicitly casting into a larger reference type
 		short sh = (short) x; //must explicitly cast into smaller type
 		System.out.println(sh);
+	}
+
+	static int charToNum(char c) { 
+		return c; 
+	}
+
+	static char numToChar(int num) {
+		return (char) num; 
+	}
+	
+	static void wrappers() {
+		System.out.println(Integer.MAX_VALUE);
+	
+		System.out.println(Integer.parseInt("nine"));
 	}
 
 }
