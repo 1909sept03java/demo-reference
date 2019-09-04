@@ -17,6 +17,26 @@ import java.util.Arrays;
 
 public class ClassBasics {
 	
+	//here is where instance and static variables typically go
+	private String aboutMe;
+	
+	// no arg constructor! still implicitly calls super()
+	ClassBasics(){}
+	
+	public ClassBasics(String aboutMe) {
+		super();
+		this.aboutMe = aboutMe;
+	}
+
+	
+	public String getAboutMe() {
+		return aboutMe;
+	}
+
+	public void setAboutMe(String aboutMe) {
+		this.aboutMe = aboutMe;
+	}
+
 	public static void main(String[] args) {
 		/*
 		 * in order to use instance fields inside of static methods,
@@ -26,7 +46,7 @@ public class ClassBasics {
 		basics.learnJava();
 	}
 	
-	static void sortNums(int... nums) {
+	static void sortNums( int... nums) {
 		Arrays.sort(nums);
 	}
 	
@@ -35,6 +55,8 @@ public class ClassBasics {
 	}
 	
 	void learnJava() {
+		sortNums();
+		sortNums(100, 31, 35, 124, 46, 342354);
 		sortNums(1, 2, 4, 5, 6);
 	}
 	
