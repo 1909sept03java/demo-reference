@@ -27,12 +27,6 @@ public class Dog extends Animal{
 		return "puppy chow";
 	}
 
-	@Override
-	void move() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	void forDogsOnly() {
 		System.out.println("for dogs only");
 	}

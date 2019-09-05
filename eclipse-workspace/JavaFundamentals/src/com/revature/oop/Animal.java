@@ -15,14 +15,26 @@ package com.revature.oop;
  * 
  * More on that here... https://www.java67.com/2013/02/can-abstract-class-have-constructor-in-java.html
  */
-public abstract class Animal implements Livable {
+public class Animal implements Livable {
 	public String type = "animal";
 	public String animalVar = "all animals";
 	
-	abstract void move();
+	//abstract void move();
 	
 	@Override
 	public String consume() {
 		return "Yum! I am eating  good food!";
+	}
+
+	@Override
+	public int reproduce() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String communicate() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
