@@ -1,5 +1,6 @@
 package com.revature.exceptions;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -29,7 +30,8 @@ public class UnderstandingExceptions {
 
 	static Scanner scanner = new Scanner(System.in);
 	public static void main(String[] args) {
-		run();
+		int[] arr = {1, 4, 5, 6, 7};
+		throwsRuntime(arr);
 	}
 
 	static void run() {
@@ -53,6 +55,10 @@ public class UnderstandingExceptions {
 			System.out.println("You entered an invalid value. please try again!");
 			//run();
 		}
+	}
+	
+	static void throwsRuntime(int[] arr) throws  ArrayIndexOutOfBoundsException{
+		System.out.println(arr[10]);
 	}
 
 
