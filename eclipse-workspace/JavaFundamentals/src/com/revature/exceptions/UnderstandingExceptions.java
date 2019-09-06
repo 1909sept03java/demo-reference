@@ -60,6 +60,15 @@ public class UnderstandingExceptions {
 	static void throwsRuntime(int[] arr) throws  ArrayIndexOutOfBoundsException{
 		System.out.println(arr[10]);
 	}
+	
+	
+	static void methodA() throws Exception{
+		throw new Exception();
+	}
+	
+	static void methodB() {
+		//methodA();
+	}
 
 
 }
