@@ -50,5 +50,17 @@ public class CalculatorTest {
 		thrown.expect(CalculatorException.class);
 		calculator.add("4,5,6");
 	}
+	
+	@Test
+	public void incorrectCharactersThrowsException() throws CalculatorException {
+		thrown.expect(CalculatorException.class);
+		calculator.add("4,cat");
+	}
+	
+	@Test
+	public void twoNumbersReturnsSum() throws CalculatorException {
+		assertEquals(44.0, calculator.add("22.0,22.0"), .0001);
+	}
+	
 
 }
