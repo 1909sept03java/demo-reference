@@ -1,6 +1,8 @@
 package com.revature.main;
 
-import com.revature.beans.Cave;
+import com.revature.beans.Bear;
+import com.revature.dao.BearDAO;
+import com.revature.dao.BearDAOImpl;
 import com.revature.dao.CaveDAO;
 import com.revature.dao.CaveDAOImpl;
 
@@ -17,10 +19,17 @@ public class Driver {
 		}
 		*/
 		CaveDAO cd = new CaveDAOImpl();
-		for (Cave c : cd.getCaves()) {
+		//cd.createCave(new Cave(0,"Howe Caverns",5));
+		/*for (Cave c : cd.getCaves()) {
 			System.out.println(c);
+		}*/
+		//System.out.println(cd.getCaveById(1));
+		
+		BearDAO bd = new BearDAOImpl();
+		for (Bear b : bd.getBears()) {
+			System.out.println(b);
 		}
-		System.out.println(cd.getCaveById(1));
+		//System.out.println("fed bear "+bd.feedBear(56, 1001, 5.2)+" pounds of honey");
 	}
 
 }

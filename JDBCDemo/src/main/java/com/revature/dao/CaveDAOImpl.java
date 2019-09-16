@@ -63,8 +63,24 @@ public class CaveDAOImpl implements CaveDAO {
 
 	@Override
 	public void createCave(Cave cave) {
-		// TODO Auto-generated method stub
-		
+		try (Connection conn = ConnectionUtil.getConnection()) {
+			// setup structure of statement to execute
+			String sql = "INSERT INTO CAVE VALUES (?,?,?)";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			// obtain values from Cave object passed to the method 
+			// set those values for the PreparedStatement's placeholders
+			// indexed from 1, like barbarians :(
+			pstmt.setInt(1, cave.getId());
+			pstmt.setString(2, cave.getName());
+			pstmt.setInt(3, cave.getMaxBears());
+			// execute statement
+			// does return an int of the # rows affected
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 	@Override

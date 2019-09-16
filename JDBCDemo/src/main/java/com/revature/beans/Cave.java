@@ -6,7 +6,7 @@ public class Cave {
 		super();
 	}
 	public Cave(int id, String name, int maxBears) {
-		super();
+		this();
 		this.id = id;
 		this.name = name;
 		this.maxBears = maxBears;
