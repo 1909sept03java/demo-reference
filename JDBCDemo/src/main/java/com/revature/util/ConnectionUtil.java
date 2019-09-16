@@ -10,16 +10,16 @@ import java.util.Properties;
 
 public class ConnectionUtil {
 
-	public static Connection getConnection() throws SQLException {
+	/*public static Connection getConnection() throws SQLException {
 		return DriverManager.getConnection(
 				"jdbc:oracle:thin:@demo-sept3.chid1me7fqpz.us-east-1.rds.amazonaws.com:1521:orcl", "admin", "p4ssw0rd");
-	}
+	}*/
 
-	public static Connection getConnectionFromFile(String filename) throws SQLException, IOException {
+	public static Connection getConnection() throws SQLException, IOException {
 		// read in contents of a properties file - NEVER want to hardcode credentials
 		Properties prop = new Properties();
-		InputStream in = new FileInputStream(filename);
-		prop.load(in);
+		//InputStream in = new FileInputStream("connection.properties");
+		prop.load(ConnectionUtil.class.getClassLoader().getResourceAsStream("connection.properties"));
 		// need to provide: url to the database, username, password
 		return DriverManager.getConnection(prop.getProperty("url"), prop.getProperty("username"),
 				prop.getProperty("password"));

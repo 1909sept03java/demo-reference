@@ -1,5 +1,6 @@
 package com.revature.dao;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,6 +31,8 @@ public class CaveDAOImpl implements CaveDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
 		}
 		return cl;
 	}
@@ -52,6 +55,8 @@ public class CaveDAOImpl implements CaveDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
 		}
 		return c;
 	}
