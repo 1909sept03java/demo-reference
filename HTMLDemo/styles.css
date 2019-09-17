@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #b85ac4;
+}
+
+header {
+    border-bottom: 5px ridge grey;
+    background: #9ab4c1;
+}
+
+nav {
+    padding: 10px;
+}
+
+article {
+    background: #567abc;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+aside {
+    background: #0542b3;
+    box-sizing: border-box;
+    padding: 10px;
+    border-left: 5px ridge grey;
+}
+
+#main-view {
+    display: flex;
+    flex-direction: row;
+}
+
+#top-container {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    min-height: 100vh;
+    min-width: 100vw;
+    flex-grow: 1;
+}
