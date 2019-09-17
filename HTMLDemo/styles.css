@@ -39,3 +39,10 @@ aside {
     min-width: 100vw;
     flex-grow: 1;
 }
+
+form {
+    padding: 10px;
+    margin: 10px;
+    border: 4px solid #333777;
+    background-color: #defabc;
+}
