@@ -16,6 +16,36 @@
         <form action="" method="POST">
             <input type="text" name="q"/><br>
             <input type="submit" value="let me NOT Google that for you"/>
-        </form>      
+        </form>  
+        <!-- restrict inputs, use dates, hide passwords -->    
+        <form>
+            <input name="username" autocomplete="off" placeholder="username" required="true">
+            <br>
+            <input name="password" autocomplete="off" type="password" required="true"/>
+            <br>
+            <input type="submit" value="login"/>
+        </form>
+        <form>
+            <input name="date1" type="date"/><br>
+            <input name="text1" placeholder="AAA999" pattern="[A-Z]{3}[0-9]{3}"/>
+            <input type="submit" value="submit"/>
+        </form>
+        <!-- radio buttons and checkboxes -->
+        <form>
+            <fieldset>
+                <legend>Cat Breeds</legend>
+                <input type="radio" name="radio1" value="Bengal" checked/>Bengal<br>
+                <input type="radio" name="radio1" value="Maine Coon"/>Maine Coon<br>
+                <input type="radio" name="radio1" value="Siamese"/>Siamese<br>
+            </fieldset>
+            <fieldset>
+                <legend>Programming Languages</legend>
+                <input type="checkbox" name="check1" value="Java" checked/>Java<br>
+                <input type="checkbox" name="check1" value="Lisp"/>Lisp<br>
+                <input type="checkbox" name="check1" value="Fortran"/>Fortran<br>
+            </fieldset>
+            <input type="submit" value="submit"/>
+        </form>
+        </form>
     </body>
 </html>
