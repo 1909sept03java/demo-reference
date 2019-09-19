@@ -13,8 +13,23 @@ const jsonSource = '{"people":[{"name":"Fred", "age": 87},{"name":"Francis", "ag
 
 function showPeople() {
     let peopleObj = JSON.parse(jsonSource);
-    console.log(peopleObj);
-    /*for (person in people) {
-        console.log(person);
-    }*/
+    // select parent element for new list items
+    let ul = document.getElementById("peopleList");
+    peopleObj.people.forEach(element => {
+        // create a list item element to hold the information about the person
+        let li = document.createElement("li");
+        // set the inner html of li
+        li.innerHTML = `<strong>${element.name}</strong>`;
+        // append it to the parent
+        ul.appendChild(li);
+    });
 }
+
+/*
+    create a large div on the page
+    use JS to add an event listener that will display the coordinates of the cursor position
+    in a dynamically created box 
+    bonus: 
+    create box when mouse enters the div
+    remove box when mouse leaves the div
+*/
