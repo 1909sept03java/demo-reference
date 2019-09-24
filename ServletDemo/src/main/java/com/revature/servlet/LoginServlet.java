@@ -23,4 +23,13 @@ public class LoginServlet extends HttpServlet {
 		// (pass the request to another resource without the client knowing)
 		req.getRequestDispatcher("Login.html").forward(req, resp);
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// grab credentials from the request - use getParameter for form data
+		String username = req.getParameter("username");
+		String password = req.getParameter("password");
+		System.out.println(username);
+		System.out.println(password);
+	}
 }
