@@ -7,8 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class LoginServlet extends HttpServlet {
+import com.revature.beans.Credentials;
+import com.revature.beans.User;
+import com.revature.service.AuthenticationService;
 
+public class LoginServlet extends HttpServlet {
+	
+	private AuthenticationService authService = new AuthenticationService();
 	private static final long serialVersionUID = 817105812389880890L;
 
 	/*
@@ -27,9 +32,20 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// grab credentials from the request - use getParameter for form data
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
-		System.out.println(username);
-		System.out.println(password);
+		Credentials creds = new Credentials();
+		creds.setUsername(req.getParameter("username"));
+		creds.setPassword(req.getParameter("password"));
+		// pass responsibility for performing auth logic to a service
+		User u = authService.authenticateUser(creds);
+		if (u != null) {
+			// they're real 
+			// redirect to their profile
+			resp.sendRedirect("profile");
+		} else {
+			// they're not real
+			// resp.getWriter().write("invalid credentials");
+			// redirect back to login
+			resp.sendRedirect("login");
+		}
 	}
 }
