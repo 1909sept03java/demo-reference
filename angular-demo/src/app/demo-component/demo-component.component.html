@@ -1,0 +1,30 @@
+<div>
+    <span>Interpolation:</span> 
+    <br>
+    <p>first name: {{user.firstname}}</p>
+    <p>last name: {{user.lastname}}</p>
+    <p>email: {{user.email}}</p>
+</div>
+<br>
+<div>
+    <span>Event Binding:</span>
+    <p>{{counter}}</p>
+    <button (click)="incrementCounter()">increment</button>
+</div>
+<br>
+<div>
+    <span>Property Binding:</span>
+    <p [ngStyle]="objectStyle" (click)="toggleStyles()">click to toggle styles</p>
+</div>
+<br>
+<!-- need to import FormsModule in app.module.ts for NgModel -->
+<div>
+    <span>Input for Two-Way Binding:</span>
+    <br>
+    <input [(ngModel)]="user.firstname" placeholder="first name">
+    <br>
+    <input [(ngModel)]="user.lastname" placeholder="last name">
+    <br>
+    <input [(ngModel)]="user.email" placeholder="email">
+</div>
+  
