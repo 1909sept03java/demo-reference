@@ -9,14 +9,17 @@ export class DemoComponentComponent implements OnInit {
 
   constructor() { }
 
+  // property of DemoComponentComponent
   user = {
     firstname: 'Merlin',
     lastname: 'Higgins',
     email: 'wizardcat@gmail.com'
   };
 
+  // property being incremented for event binding demo
   counter = 0; // relying on inferred type
 
+  // property being bound to ngStyle in property binding demo
   objectStyle = {
     color: 'red',
     border: '4px solid black',
@@ -24,10 +27,12 @@ export class DemoComponentComponent implements OnInit {
     margin: '2px'
   };
 
+  // function invoked in event binding demo
   incrementCounter(): void {
     this.counter++;
   }
 
+  // function invoked in property binding demo
   toggleStyles(): void {
     if (this.objectStyle.color === 'red') {
       this.objectStyle.color = 'blue';
