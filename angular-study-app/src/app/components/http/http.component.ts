@@ -26,6 +26,7 @@ export class HttpComponent implements OnInit {
   getBearInformation(): void {
     this.bearService.fetchBearInformation(this.selectedBearId)
       .subscribe(
+        //data => console.log(data)
         bear => this.bear = bear,
         error => console.log(`Error: ${error} `)
       );
@@ -34,11 +35,11 @@ export class HttpComponent implements OnInit {
   getBears(): void {
     this.bearService.fetchAllBears()
       .subscribe(
-        (bearList: any) => { this.bears = bearList; console.log(this.bears); },
+        bearList => { this.bears = bearList; console.log(this.bears); },
         error => { console.log(error); }
       );
-    console.log('populated bears');
-    console.log(this.bears);
+    //console.log('populated bears');
+    //console.log(this.bears);
     // this will usually print 'undefined' because it is attempting to print a
     // value which may not have back from the Observable yet.
   }

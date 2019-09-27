@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class BearService {
 
-  endpoint = 'http://localhost:8084/ServletDemo/bear';
+  endpoint = 'http://localhost:8082/ServletDemo/bear';
 
   // inject HttpClient
   constructor(private httpClient: HttpClient) { }

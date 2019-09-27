@@ -14,16 +14,18 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.revature.beans.Bear;
 import com.revature.service.BearService;
 
-@WebServlet("/bear") // alternate way to register and map servlets. Pick this or XML and do so through the whole app!
+@WebServlet("/bear") // alternate way to register and map servlets. Pick this or XML and do so
+						// through the whole app!
 public class BearServlet extends HttpServlet {
-	
+
 	// this is our service class whose methods we will call
 	private BearService bearService;
-	
-	// we'll use this to convert Java objects to JSON-formatted data to include in response bodies
+
+	// we'll use this to convert Java objects to JSON-formatted data to include in
+	// response bodies
 	// we use Jackson to get this dependency
 	private ObjectMapper om;
-	
+
 	public BearServlet() {
 		bearService = new BearService();
 		om = new ObjectMapper();
@@ -31,12 +33,14 @@ public class BearServlet extends HttpServlet {
 		om.configure(SerializationFeature.WRITE_DATE_KEYS_AS_TIMESTAMPS, false);
 	}
 
-	// return all bears, in JSON format, IF no bear id is specified. Otherwise return the requested bear.
+	// return all bears, in JSON format, IF no bear id is specified. Otherwise
+	// return the requested bear.
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// check whether there is an id provided in the query string 
+		setAccessControlHeaders(resp);
+		// check whether there is an id provided in the query string
 		String idString = req.getParameter("id");
-		if(idString != null) {
+		if (idString != null) {
 			// try and find the desired bear
 			try {
 				int id = Integer.parseInt(idString);
@@ -47,7 +51,7 @@ public class BearServlet extends HttpServlet {
 				} else {
 					resp.sendError(404);
 				}
-			} catch(Exception e) {
+			} catch (Exception e) {
 				resp.sendError(400); // general bad request
 			}
 		} else {
@@ -55,8 +59,8 @@ public class BearServlet extends HttpServlet {
 			resp.getWriter().write(om.writeValueAsString(bearService.getBears()));
 		}
 	}
-	
-	@Override 
+
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// read request body and convert to a Java object from JSON format
 		if (bearService.createBear(om.readValue(req.getReader(), Bear.class))) {
@@ -64,6 +68,11 @@ public class BearServlet extends HttpServlet {
 		} else {
 			resp.setStatus(400);
 		}
+	}
+
+	private void setAccessControlHeaders(HttpServletResponse resp) {
+		resp.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+		resp.setHeader("Access-Control-Allow-Methods", "*");
 	}
 
 }
