@@ -15,5 +15,7 @@
 		<!-- choose whether to start fresh or update existing DDL -->
 		<!-- defaults to update -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- where are the mapped beans? -->
+		<mapping class="com.revature.beans.Flashcard"></mapping>
 	</session-factory>
 </hibernate-configuration>
