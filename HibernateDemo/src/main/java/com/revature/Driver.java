@@ -6,6 +6,7 @@ import org.hibernate.Transaction;
 
 import com.revature.beans.Flashcard;
 import com.revature.beans.StudySet;
+import com.revature.beans.Topic;
 import com.revature.util.ConnectionUtil;
 
 public class Driver {
@@ -27,7 +28,76 @@ public class Driver {
 		// an open session
 
 		// setup();
-		funWithGetAndLoad(sf);
+		// funWithGetAndLoad(sf);
+		//funWithSaveAndPersist(sf);
+		funWithUpdateAndMerge(sf);
+	}
+	
+	public static void funWithUpdateAndMerge(SessionFactory sf) {
+		Session s1 = sf.openSession();
+		Transaction tx1 = s1.beginTransaction();
+		
+		// transient Flashcard with a real PK
+		// "detached", sort of
+		Flashcard f1 = new Flashcard(23, "what else is Java?", "A place", new Topic(1, "coding"));
+		s1.update(f1);
+		
+		// try to update Flashcard f1 again (it's now persistent)
+		Flashcard f2 = new Flashcard(23, "what else is Java?", "an acronym for Just A Valid Answer", new Topic(1, "coding"));
+		// s1.update(f2); //NonUniqueObjectException
+		
+		// try to update a fake Flashcard
+		Flashcard f3 = new Flashcard(323, "", "", null);
+		// s1.update(f3); //StaleObjectStateException
+		
+		// merge: will check whether a persistent version exists, then copy over values onto persistent obj
+		s1.merge(f2);
+		
+		tx1.commit();
+		s1.close();
+	}
+	
+	public static void funWithSaveAndPersist(SessionFactory sf) {
+		
+		Session s1 = sf.openSession();
+		Transaction tx1 = s1.beginTransaction();
+		
+		// immediately get generated id with save()
+		int newId = (int) s1.save(new Topic("botany"));
+		System.out.println(newId);
+		
+		// just persist the object
+		Topic t = new Topic("zoology"); // t is transient
+		s1.persist(t);
+		
+		// t is now persistent
+		// automatic dirty checking will cause changes to t to be updated in the db
+		t.setName("linguistics");
+		
+		System.out.println(t);
+		
+		tx1.commit();
+		s1.close();
+		
+		// t is now detached
+		
+		// open another session
+		Session s2 = sf.openSession();
+		Transaction tx2 = s2.beginTransaction();
+		
+		// try to re-save t
+		s2.save(t);
+		// will create a new record with different persistent identity
+		
+		// try to persist t
+		// ignores id value already in t, persists new object
+		s2.persist(t);
+		
+		tx2.commit();
+		s2.close();
+		
+		System.out.println(t);
+		
 	}
 
 	public static void funWithGetAndLoad(SessionFactory sf) {
