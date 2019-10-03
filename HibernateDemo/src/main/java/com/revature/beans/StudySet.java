@@ -3,6 +3,7 @@ package com.revature.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -39,7 +40,7 @@ public class StudySet {
 	@Column(name="DESCRIPTION")
 	private String description;
 	// set up a unidirectional many-to-many relationship with Flashcard
-	@ManyToMany(fetch=FetchType.EAGER)
+	@ManyToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 	@JoinTable(name="FLASHCARD_STUDY_SET",
 			joinColumns = {@JoinColumn(name="STUDY_SET_ID")},
 			inverseJoinColumns = {@JoinColumn(name="FLASHCARD_ID")})
