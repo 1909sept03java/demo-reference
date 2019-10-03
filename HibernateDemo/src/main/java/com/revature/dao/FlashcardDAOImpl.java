@@ -20,7 +20,6 @@ public class FlashcardDAOImpl implements FlashcardDAO {
 		try (Session s = sf.openSession()) {
 			f = s.get(Flashcard.class, id);
 			System.out.println(s.getStatistics());
-			f.setAnswer("Merlin");
 		}
 		return f;
 	}
@@ -44,7 +43,7 @@ public class FlashcardDAOImpl implements FlashcardDAO {
 		try (Session s = sf.openSession()) {
 			// autocommit is OFF in Hibernate
 			Transaction tx = s.beginTransaction();
-			s.persist(flashcard);
+			s.saveOrUpdate(flashcard);
 			tx.commit();
 			added = true;
 			System.out.println(s.getStatistics());

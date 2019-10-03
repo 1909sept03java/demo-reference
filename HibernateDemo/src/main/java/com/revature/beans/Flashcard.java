@@ -1,10 +1,14 @@
 package com.revature.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -15,17 +19,20 @@ public class Flashcard {
 	public Flashcard() {
 		super();
 	}
-	public Flashcard(String question, String answer) {
+	public Flashcard(String question, String answer, Topic topic) {
 		super();
 		this.question = question;
 		this.answer = answer;
+		this.topic = topic;
 	}
-	public Flashcard(int id, String question, String answer) {
+	public Flashcard(int id, String question, String answer, Topic topic) {
 		super();
 		this.id = id;
 		this.question = question;
 		this.answer = answer;
+		this.topic = topic;
 	}
+	
 	@Id // indicates that this is the primary key! ("persistent identity" of a Flashcard)
 	// generate values for this PK
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="flashcardSequence")
@@ -37,6 +44,11 @@ public class Flashcard {
 	private String question;
 	@Column(name="ANSWER")
 	private String answer;
+	// establish a foreign key from Flashcard to Topic
+	// Topic has to be a correctly mapped entity for this to work
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+	@JoinColumn(name="TOPIC_ID")
+	private Topic topic;
 	public int getId() {
 		return id;
 	}
@@ -55,6 +67,12 @@ public class Flashcard {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
+	public Topic getTopic() {
+		return topic;
+	}
+	public void setTopic(Topic topic) {
+		this.topic = topic;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -62,6 +80,7 @@ public class Flashcard {
 		result = prime * result + ((answer == null) ? 0 : answer.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((question == null) ? 0 : question.hashCode());
+		result = prime * result + ((topic == null) ? 0 : topic.hashCode());
 		return result;
 	}
 	@Override
@@ -85,11 +104,15 @@ public class Flashcard {
 				return false;
 		} else if (!question.equals(other.question))
 			return false;
+		if (topic == null) {
+			if (other.topic != null)
+				return false;
+		} else if (!topic.equals(other.topic))
+			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "Flashcard [id=" + id + ", question=" + question + ", answer=" + answer + "]";
+		return "Flashcard [id=" + id + ", question=" + question + ", answer=" + answer + ", topic=" + topic + "]";
 	}
-
 }
