@@ -6,12 +6,42 @@
 	 http://www.springframework.org/schema/beans/spring-beans.xsd
 	 http://www.springframework.org/schema/context 
 	 http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-	 
-	 <!-- specify a logical name for the bean that the IoC container will use to identify it -->
-	 <bean name="topicBean" class="com.revature.model.Topic">
-	 	<!-- inject some primitive values (not bean wiring or dependency injection, just filling in fields) -->
-	 	<property name="id" value="42"></property>
-	 	<property name="name" value="coding"></property>
-	 </bean>
-	 
+
+	<!-- specify a logical name for the bean that the IoC container will use 
+		to identify it -->
+	<bean name="topicBean" class="com.revature.model.Topic">
+		<!-- inject some primitive values (not bean wiring or dependency injection, 
+			just filling in fields) -->
+		<property name="id" value="42"></property>
+		<property name="name" value="coding"></property>
+	</bean>
+
+	<!-- setter injection with explicit bean wiring -->
+	<bean name="flashcard" class="com.revature.model.Flashcard">
+		<!-- "name" is the FIELD IN THE BEAN (Spring will use reflection to look 
+			for a setter called set[NAME] -->
+		<!-- "ref" is the name of the BEAN BEING INJECTED -->
+		<property name="topic" ref="topicBean"></property>
+	</bean>
+
+	<!-- constructor injection with explicit bean wiring -->
+	<bean name="constructorInjectionFlashcard"
+		class="com.revature.model.ConstructorInjectionFlashcard">
+		<!-- must have a constructor which takes an argument which matches the 
+			datatype of the referenced bean -->
+		<constructor-arg ref="topicBean"></constructor-arg>
+	</bean>
+
+	<!-- autowiring: not specifically defining what bean is getting injected -->
+	<!-- match based on name of available beans or the type of available beans -->
+	<bean name="autowiredFlashcard"
+		class="com.revature.model.AutowiredFlashcard" autowire="byName">
+		<!-- could also set autowire="byType" and it would work similarly -->
+	</bean>
+
+	<!-- can use "stereotypes" (special annotations which can be applied to 
+		classes to register them as beans) instead of explicit bean registration 
+		in a a config file -->
+	<context:component-scan base-package="com.revature"></context:component-scan>
+
 </beans>
