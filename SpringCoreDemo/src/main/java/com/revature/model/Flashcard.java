@@ -1,6 +1,9 @@
 package com.revature.model;
 
-public class Flashcard {
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
+public class Flashcard implements InitializingBean, DisposableBean {
 	
 	public Flashcard() {
 		super();
@@ -88,5 +91,19 @@ public class Flashcard {
 	@Override
 	public String toString() {
 		return "Flashcard [id=" + id + ", question=" + question + ", answer=" + answer + ", topic=" + topic + "]";
+	}
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("implemented afterPropertiesSet");
+	}
+	public void customInit() {
+		System.out.println("custom init method");
+	}
+	@Override
+	public void destroy() throws Exception {
+		System.out.println("implemented destroy");
+	}
+	public void customDestroy() {
+		System.out.println("custom destroy method");
 	}
 }

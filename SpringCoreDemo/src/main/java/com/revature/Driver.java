@@ -26,18 +26,21 @@ public class Driver {
 		
 		// obtain an instance of the Flashcard bean
 		Flashcard f = (Flashcard) ac.getBean("flashcard");
-		//System.out.println(f);
+		System.out.println(f);
 		
-		ConstructorInjectionFlashcard c = (ConstructorInjectionFlashcard) ac.getBean("constructorInjectionFlashcard");
+		//ConstructorInjectionFlashcard c = (ConstructorInjectionFlashcard) ac.getBean("constructorInjectionFlashcard");
 		//System.out.println(c);
 		
-		AutowiredFlashcard a = (AutowiredFlashcard) ac.getBean("autowiredFlashcard");
+		//AutowiredFlashcard a = (AutowiredFlashcard) ac.getBean("autowiredFlashcard");
 		//System.out.println(a);
 		
-		ComponentScannedFlashcard csf = (ComponentScannedFlashcard) ac.getBean("componentScannedFlashcard");
-		System.out.println(csf);
+		//ComponentScannedFlashcard csf = (ComponentScannedFlashcard) ac.getBean("componentScannedFlashcard");
+		//System.out.println(csf);
 		
 		ac.close();
+		
+		System.out.println(f);
+		
 	}
 
 }
