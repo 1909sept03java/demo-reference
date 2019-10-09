@@ -3,3 +3,17 @@
 2019-10-09 13:15:42 WARN  root:31 - Human [speed=20.0, isHungry=true, gitHub=cool_coder_x64] caught Bear [speed=5.0, isHungry=false]
 2019-10-09 13:15:42 FATAL root:33 - Human [speed=20.0, isHungry=true, gitHub=cool_coder_x64] ate Bear [speed=5.0, isHungry=false]
 2019-10-09 13:17:15 FATAL root:33 - Human [speed=20.0, isHungry=true, gitHub=cool_coder_x64] ate Bear [speed=5.0, isHungry=false]
+2019-10-09 14:28:33 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@573fd745: startup date [Wed Oct 09 14:28:33 EDT 2019]; root of context hierarchy
+2019-10-09 14:28:33 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2019-10-09 14:28:33 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'circleOfLifeService' defined in file [C:\GitRepos\1909sept03java\demo-reference\SpringAOPDemo\target\classes\com\revature\service\CircleOfLifeService.class]: Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: Pointcut is not well-formed: expecting ')' at character position 0
+within(com.revature.service.*
+^
+
+2019-10-09 14:29:40 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@573fd745: startup date [Wed Oct 09 14:29:40 EDT 2019]; root of context hierarchy
+2019-10-09 14:29:40 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2019-10-09 14:29:40 INFO  root:24 - void com.revature.service.CircleOfLifeService.chase(Animal,Animal)
+2019-10-09 14:29:40 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@573fd745: startup date [Wed Oct 09 14:29:40 EDT 2019]; root of context hierarchy
+2019-10-09 14:36:21 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@573fd745: startup date [Wed Oct 09 14:36:21 EDT 2019]; root of context hierarchy
+2019-10-09 14:36:21 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2019-10-09 14:36:22 ERROR root:31 - void com.revature.service.CircleOfLifeService.chase(Animal,Animal) threw class com.revature.service.GotEatenException with stack trace: [Ljava.lang.StackTraceElement;@762ef0ea
+2019-10-09 14:36:22 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@573fd745: startup date [Wed Oct 09 14:36:21 EDT 2019]; root of context hierarchy

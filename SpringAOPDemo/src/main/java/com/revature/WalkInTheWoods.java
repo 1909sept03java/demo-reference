@@ -1,5 +1,8 @@
 package com.revature;
 
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.revature.model.Bear;
 import com.revature.model.Human;
 import com.revature.service.CircleOfLifeService;
@@ -9,7 +12,9 @@ public class WalkInTheWoods {
 
 	public static void main(String[] args) {
 		
-		CircleOfLifeService cls = new CircleOfLifeService();
+		AbstractApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		
+		CircleOfLifeService cls = (CircleOfLifeService) ac.getBean("circleOfLifeService");
 		
 		Human h = new Human();
 		h.setSpeed(20.0);
@@ -25,6 +30,7 @@ public class WalkInTheWoods {
 			e.printStackTrace();
 		}
 		
+		ac.close();
 	}
 
 }
