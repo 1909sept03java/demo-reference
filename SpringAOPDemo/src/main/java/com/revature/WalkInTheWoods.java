@@ -17,7 +17,7 @@ public class WalkInTheWoods {
 		h.setHungry(true);
 		
 		Bear b = new Bear();
-		b.setSpeed(15.0);
+		b.setSpeed(5.0);
 		
 		try {
 			cls.chase(h, b);
