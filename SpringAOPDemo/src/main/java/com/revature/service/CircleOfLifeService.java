@@ -17,9 +17,9 @@ public class CircleOfLifeService {
 	 */
 	public void chase(Animal a1, Animal a2) throws GotEatenException {
 		// log.info(a1 + " is chasing " + a2);
-		if (a1.getSpeed() > a2.getSpeed()) {
+		// if (a1.getSpeed() > a2.getSpeed()) {
 			this.capture(a1, a2);
-		}
+		// }
 	}
 
 	/**

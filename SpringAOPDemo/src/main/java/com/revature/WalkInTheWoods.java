@@ -22,7 +22,7 @@ public class WalkInTheWoods {
 		h.setHungry(true);
 		
 		Bear b = new Bear();
-		b.setSpeed(5.0);
+		b.setSpeed(55.0);
 		
 		try {
 			cls.chase(h, b);

@@ -17,3 +17,15 @@ within(com.revature.service.*
 2019-10-09 14:36:21 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
 2019-10-09 14:36:22 ERROR root:31 - void com.revature.service.CircleOfLifeService.chase(Animal,Animal) threw class com.revature.service.GotEatenException with stack trace: [Ljava.lang.StackTraceElement;@762ef0ea
 2019-10-09 14:36:22 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@573fd745: startup date [Wed Oct 09 14:36:21 EDT 2019]; root of context hierarchy
+2019-10-09 15:14:51 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@573fd745: startup date [Wed Oct 09 15:14:51 EDT 2019]; root of context hierarchy
+2019-10-09 15:14:52 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2019-10-09 15:14:52 INFO  root:44 - Human [speed=20.0, isHungry=true, gitHub=cool_coder_x64] is chasing Bear [speed=5.0, isHungry=false]
+2019-10-09 15:14:52 WARN  root:46 - Human [speed=20.0, isHungry=true, gitHub=cool_coder_x64] is faster than Bear [speed=5.0, isHungry=false]
+2019-10-09 15:14:52 ERROR root:35 - void com.revature.service.CircleOfLifeService.chase(Animal,Animal) threw class com.revature.service.GotEatenException with stack trace: [Ljava.lang.StackTraceElement;@a1cdc6d
+2019-10-09 15:14:52 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@573fd745: startup date [Wed Oct 09 15:14:51 EDT 2019]; root of context hierarchy
+2019-10-09 15:15:52 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@573fd745: startup date [Wed Oct 09 15:15:52 EDT 2019]; root of context hierarchy
+2019-10-09 15:15:52 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2019-10-09 15:15:53 INFO  root:44 - Human [speed=20.0, isHungry=true, gitHub=cool_coder_x64] is chasing Bear [speed=55.0, isHungry=false]
+2019-10-09 15:15:53 INFO  root:49 - Bear [speed=55.0, isHungry=false] got away
+2019-10-09 15:15:53 INFO  root:29 - void com.revature.service.CircleOfLifeService.chase(Animal,Animal)
+2019-10-09 15:15:53 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@573fd745: startup date [Wed Oct 09 15:15:52 EDT 2019]; root of context hierarchy
