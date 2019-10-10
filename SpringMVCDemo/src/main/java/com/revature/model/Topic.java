@@ -1,5 +1,15 @@
 package com.revature.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TOPIC")
 public class Topic {
 	
 	public Topic() {
@@ -14,7 +24,13 @@ public class Topic {
 		this.id = id;
 		this.name = name;
 	}
+	@Id // indicates that this is the primary key! ("persistent identity" of a Topic)
+	// generate values for this PK
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="topicSequence")
+	@SequenceGenerator(allocationSize=1, name="topicSequence", sequenceName="SQ_TOPIC_PK")
+	@Column(name="TOPIC_ID")
 	private int id;
+	@Column(name="NAME")
 	private String name;
 	public int getId() {
 		return id;
@@ -27,7 +43,6 @@ public class Topic {
 	}
 	public void setName(String name) {
 		this.name = name;
-		System.out.println("in name setter");
 	}
 	@Override
 	public String toString() {

@@ -1,5 +1,19 @@
 package com.revature.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="FLASHCARD")
 public class Flashcard {
 	
 	public Flashcard() {
@@ -19,9 +33,21 @@ public class Flashcard {
 		this.topic = topic;
 	}
 	
+	@Id // indicates that this is the primary key! ("persistent identity" of a Flashcard)
+	// generate values for this PK
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="flashcardSequence")
+	@SequenceGenerator(allocationSize=1, name="flashcardSequence", sequenceName="SQ_FLASHCARD_PK")
+	@Column(name="FLASHCARD_ID")
 	private int id;
+	// don't strictly need these unless you want to customize your column definitions
+	@Column(name="QUESTION")
 	private String question;
+	@Column(name="ANSWER")
 	private String answer;
+	// establish a foreign key from Flashcard to Topic
+	// Topic has to be a correctly mapped entity for this to work
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+	@JoinColumn(name="TOPIC_ID")
 	private Topic topic;
 	public int getId() {
 		return id;

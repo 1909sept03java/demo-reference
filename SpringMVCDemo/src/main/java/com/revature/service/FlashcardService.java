@@ -1,17 +1,17 @@
 package com.revature.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.dao.FlashcardDAO;
 import com.revature.model.Flashcard;
-import com.revature.model.Topic;
 
 @Service
 public class FlashcardService {
 
-	{
+/*	{
 		Topic t1 = new Topic(1, "coding");
 		Topic t2 = new Topic(4, "entomology");
 		this.cardList = new ArrayList<Flashcard>();
@@ -22,24 +22,31 @@ public class FlashcardService {
 	}
 
 	private List<Flashcard> cardList;
-
+*/
+	private FlashcardDAO flashcardDAO;
+	
+	@Autowired
+	public FlashcardService(FlashcardDAO flashcardDAO) {
+		this.flashcardDAO = flashcardDAO;
+	}
+	
 	public List<Flashcard> allFlashcards() {
-		return this.cardList;
+		return this.flashcardDAO.allFlashcards();
 	}
 	
 	public Flashcard getFlashcardById(int id) {
 		Flashcard f = null;
-		for (Flashcard c : this.cardList) {
+		/*for (Flashcard c : this.cardList) {
 			if (c.getId() == id) {
 				f = c;
 				break;
 			}
-		}
+		}*/
 		return f;
 	}
 	
 	public void addFlashcard(Flashcard f) {
-		this.cardList.add(f);
+		//this.cardList.add(f);
 	}
 
 }
