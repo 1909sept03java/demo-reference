@@ -26,5 +26,20 @@ public class FlashcardService {
 	public List<Flashcard> allFlashcards() {
 		return this.cardList;
 	}
+	
+	public Flashcard getFlashcardById(int id) {
+		Flashcard f = null;
+		for (Flashcard c : this.cardList) {
+			if (c.getId() == id) {
+				f = c;
+				break;
+			}
+		}
+		return f;
+	}
+	
+	public void addFlashcard(Flashcard f) {
+		this.cardList.add(f);
+	}
 
 }
