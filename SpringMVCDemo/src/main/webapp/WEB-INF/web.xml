@@ -17,7 +17,7 @@
 		<!-- ServletConfig -->
 		<init-param>
 			<param-name>ContextConfigLocation</param-name>
-			<param-value>/WEB-INF/applicationContext.xml</param-value>
+			<param-value>/WEB-INF/dispatcherContext.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
