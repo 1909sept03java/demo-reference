@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.model.Flashcard;
 
@@ -29,14 +30,18 @@ public class FlashcardDAOImpl implements FlashcardDAO {
 
 	@Override
 	public Flashcard getFlashcardById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = sessionFactory.openSession();
+		Flashcard f = s.get(Flashcard.class, id);
+		s.close();
+		return f;
 	}
 
+	@Transactional
 	@Override
 	public void createFlashcard(Flashcard flashcard) {
-		// TODO Auto-generated method stub
-		
+		flashcard.setId(0);
+		Session s = sessionFactory.getCurrentSession();
+		s.save(flashcard);
 	}
 	
 	

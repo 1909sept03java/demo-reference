@@ -35,18 +35,11 @@ public class FlashcardService {
 	}
 	
 	public Flashcard getFlashcardById(int id) {
-		Flashcard f = null;
-		/*for (Flashcard c : this.cardList) {
-			if (c.getId() == id) {
-				f = c;
-				break;
-			}
-		}*/
-		return f;
+		return this.flashcardDAO.getFlashcardById(id);
 	}
 	
 	public void addFlashcard(Flashcard f) {
-		//this.cardList.add(f);
+		this.flashcardDAO.createFlashcard(f);
 	}
 
 }
