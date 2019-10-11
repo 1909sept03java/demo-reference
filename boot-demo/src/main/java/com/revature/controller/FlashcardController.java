@@ -2,6 +2,8 @@ package com.revature.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -64,7 +66,7 @@ public class FlashcardController {
 	// default
 	// pattern and expecting JSON data from request)
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<String> addFlashcard(@RequestBody Flashcard flashcard) {
+	public ResponseEntity<String> addFlashcard(@Valid @RequestBody Flashcard flashcard) {
 		ResponseEntity<String> resp = null;
 		try {
 			this.flashcardService.addFlashcard(flashcard);
