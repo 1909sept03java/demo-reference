@@ -1,0 +1,19 @@
+server:
+  port: 8085
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+spring:
+  application:
+    name: flashcard-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator: 
+          enabled: true
+      routes: #every route will have id, uri, predicates, and filters
+       - id: flashcard-service
+         uri: lb://flashcard-service
+         predicates: 
+           - Path=/flashcard/**
