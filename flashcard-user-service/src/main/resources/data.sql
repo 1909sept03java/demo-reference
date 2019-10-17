@@ -1,0 +1,4 @@
+INSERT INTO FLASHCARD_USER VALUES (3, 'Gandalf', 'The Grey');
+INSERT INTO FLASHCARD_USER VALUES (4, 'Frodo', 'Baggins');
+
+COMMIT;

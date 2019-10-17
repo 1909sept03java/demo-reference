@@ -45,6 +45,10 @@ public class StudySet {
 			joinColumns = {@JoinColumn(name="STUDY_SET_ID")},
 			inverseJoinColumns = {@JoinColumn(name="FLASHCARD_ID")})
 	private List<Flashcard> flashcards = new ArrayList<>();
+	// note!! This is a reference to information which is persisted in the user-service
+	@Column(name="AUTHOR_ID")
+	private int authorId;
+	
 	public int getId() {
 		return id;
 	}
@@ -63,10 +67,17 @@ public class StudySet {
 	public void setFlashcards(List<Flashcard> flashcards) {
 		this.flashcards = flashcards;
 	}
+	public int getAuthorId() {
+		return authorId;
+	}
+	public void setAuthorId(int authorId) {
+		this.authorId = authorId;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + authorId;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((flashcards == null) ? 0 : flashcards.hashCode());
 		result = prime * result + id;
@@ -81,6 +92,8 @@ public class StudySet {
 		if (getClass() != obj.getClass())
 			return false;
 		StudySet other = (StudySet) obj;
+		if (authorId != other.authorId)
+			return false;
 		if (description == null) {
 			if (other.description != null)
 				return false;
@@ -97,7 +110,9 @@ public class StudySet {
 	}
 	@Override
 	public String toString() {
-		return "StudySet [id=" + id + ", description=" + description + ", flashcards=" + flashcards + "]";
+		return "StudySet [id=" + id + ", description=" + description + ", flashcards=" + flashcards + ", authorId="
+				+ authorId + "]";
 	}
+	
 
 }

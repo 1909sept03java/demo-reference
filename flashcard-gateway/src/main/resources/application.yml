@@ -12,8 +12,12 @@ spring:
       discovery:
         locator: 
           enabled: true
-      routes: #every route will have id, uri, predicates, and filters
+      routes: #every route can have id, uri, predicates, and filters
        - id: flashcard-service
          uri: lb://flashcard-service
          predicates: 
            - Path=/flashcard/**
+       - id: user-service
+         uri: lb://user-service
+         predicates:
+           - Path=/user/**
