@@ -12,21 +12,24 @@ import com.revature.repository.StudySetRepository;
 
 @Service
 public class StudySetService {
-	
+
 	private StudySetRepository studySetRepository;
-	
+
 	@Autowired
 	public void setStudySetRepository(StudySetRepository studySetRepository) {
 		this.studySetRepository = studySetRepository;
 	}
-	
-	@RabbitListener(queues="deleteUserQueue")
+
+	@RabbitListener(queues = "deleteUserQueue")
 	public void deleteStudySetsByUser(User toDelete) {
-		System.out.println(toDelete);
+		List<StudySet> deleted = this.studySetRepository.deleteByAuthorId(toDelete.getId());
+		for (StudySet ss : deleted) {
+			System.out.println(ss);
+		}
 	}
-	
+
 	public List<StudySet> getAllStudySets() {
-		return(this.studySetRepository.findAll());
+		return (this.studySetRepository.findAll());
 	}
 
 }
