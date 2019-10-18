@@ -10,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-@Table(name="FLASHCARD_USER")
-@Entity
 public class User implements Serializable {
 	
 	/**
@@ -27,14 +25,8 @@ public class User implements Serializable {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO, generator="userSequence")
-	@SequenceGenerator(allocationSize=1, initialValue=50, name="userSequence", sequenceName="SQ_USER_PK")
-	@Column(name="FLASHCARD_USER_ID")
 	private int id;
-	@Column(name="FIRST_NAME")
 	private String firstName;
-	@Column(name="LAST_NAME")
 	private String lastName;
 	public int getId() {
 		return id;

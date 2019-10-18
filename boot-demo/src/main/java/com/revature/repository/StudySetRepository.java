@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.revature.model.StudySet;
 
 @Repository
-public interface StudySetRepository extends JpaRepository<StudySet, Integer>{
+public interface StudySetRepository extends JpaRepository<StudySet, Integer> {
 
+	// declare a method using pattern matching to delete StudySets by author id 
+	
 }
